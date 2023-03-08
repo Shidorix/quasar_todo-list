@@ -34,7 +34,8 @@
       >
         <q-scroll-area style="height: calc(100% - 185px); margin-top: 185px; border-right: 1px solid #ddd">
           <q-list padding>
-            <q-item clickable v-ripple>
+            <q-item clickable v-ripple
+            to="/" exact>
               <q-item-section avatar>
                 <q-icon name="event" />
               </q-item-section>
@@ -44,7 +45,8 @@
               </q-item-section>
             </q-item>
 
-            <q-item clickable v-ripple>
+            <q-item clickable v-ripple
+            to="/help" exact>
               <q-item-section avatar>
                 <q-icon name="help_outline" />
               </q-item-section>
@@ -54,7 +56,8 @@
               </q-item-section>
             </q-item>
             
-            <q-item clickable v-ripple>
+            <q-item clickable v-ripple
+            to="/about" exact>
               <q-item-section avatar>
                 <q-icon name="info" />
               </q-item-section>
@@ -136,5 +139,4 @@ export default {
   height: 100%
   z-index: -1
   opacity: 0.2
-  // filter: grayscale(100%)
 </style>
