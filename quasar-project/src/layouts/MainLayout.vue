@@ -85,7 +85,9 @@
     <q-page-container>
       <router-view v-slot="{ Component }">
         <keep-alive>
+          <transition name="route" mode="out-in">
           <component :is="Component" />
+          </transition>
         </keep-alive>
       </router-view>
     </q-page-container>
@@ -139,4 +141,16 @@ export default {
   height: 100%
   z-index: -1
   opacity: 0.2
+
+.route-enter-active
+  opacity: 0
+  transform: translateY(100px)
+
+.route-enter-active,
+.route-leave-active
+  transition: all 0.2s ease-out
+
+.route-leave-to
+  opacity: 0
+  transform: translateY(100px)    
 </style>
