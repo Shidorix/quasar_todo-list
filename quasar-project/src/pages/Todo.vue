@@ -5,13 +5,22 @@
     separator bordered>
       
 
-      <q-item tag="label" v-ripple
-      v-for="task in tasks" :key="task.title">
+      <q-item 
+      @click="task.done = !task.done"
+      clickable
+      :class="{ 'done bg-green-2': task.done }"
+      v-for="task in tasks" 
+      :key="task.title"
+      v-ripple>
         <q-item-section avatar>
-          <q-checkbox v-model="task.done" val="teal" color="teal" />
+          <q-checkbox class="no-pointer-events" v-model="task.done" val="teal" color="teal" />
         </q-item-section>
         <q-item-section>
           <q-item-label> {{ task.title }}</q-item-label>
+        </q-item-section>
+        <q-item-section
+        v-if="task.done" side>
+          <q-icon name="task_alt"></q-icon>
         </q-item-section>
       </q-item>
 
@@ -45,3 +54,9 @@ export default {
 
 </script>
 
+<style lang="sass">
+.done
+  .q-item__label
+    text-decoration: line-through
+    color: grey
+</style>
