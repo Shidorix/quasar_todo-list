@@ -6,12 +6,17 @@
         <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
       </q-toolbar>
         
+      <div class="text-h6 absolute q-pl-xl q-pt-sm ">
+        {{ todayDate }}
+      </div>
+
         <div class="q-px-lg q-pt-xl q-mb-md items-center row">
-          <q-img src="../assets/logo1.png" style="width: 70px; height: 70px;" ></q-img>
+          <q-img src="../assets/logo2.png" style="width: 70px; height: 70px;" ></q-img>
           <div class="text-h3 q-pl-md">
             Shidorix's App
           </div>
           <q-img class="header-image absolute-top" src="../assets/header-img2.jpg"></q-img>
+          
         </div>  
 
       <!-- <q-tabs align="left">
@@ -22,56 +27,48 @@
     </q-header>
 
     <q-drawer
-        v-model="drawer"
+        v-model="leftDrawerOpen"
         show-if-above
         :width="200"
-        :breakpoint="400"
+        :breakpoint="600"
       >
-        <q-scroll-area style="height: calc(100% - 150px); margin-top: 150px; border-right: 1px solid #ddd">
+        <q-scroll-area style="height: calc(100% - 185px); margin-top: 185px; border-right: 1px solid #ddd">
           <q-list padding>
             <q-item clickable v-ripple>
               <q-item-section avatar>
-                <q-icon name="inbox" />
+                <q-icon name="event" />
               </q-item-section>
 
               <q-item-section>
-                Входящие
-              </q-item-section>
-            </q-item>
-
-            <q-item active clickable v-ripple>
-              <q-item-section avatar>
-                <q-icon name="star" />
-              </q-item-section>
-
-              <q-item-section>
-                Избранное
+                ToDo
               </q-item-section>
             </q-item>
 
             <q-item clickable v-ripple>
               <q-item-section avatar>
-                <q-icon name="send" />
+                <q-icon name="help_outline" />
               </q-item-section>
 
               <q-item-section>
-                Отправить
+                Помощь
               </q-item-section>
             </q-item>
-
+            
             <q-item clickable v-ripple>
               <q-item-section avatar>
-                <q-icon name="drafts" />
+                <q-icon name="info" />
               </q-item-section>
 
               <q-item-section>
-                Проекты
+                Про нас
               </q-item-section>
             </q-item>
+
+            
           </q-list>
         </q-scroll-area>
 
-        <q-img class="absolute-top" src="../assets/fon.jpg" style="height: 150px">
+        <q-img class="absolute-top" src="../assets/fon.jpg" style="height: 185px">
           <div class="absolute-bottom bg-transparent">
             <q-avatar size="56px" class="q-mb-sm">
               <img src="../assets/monk.jpg">
@@ -102,16 +99,29 @@
 
 <script>
 import { ref } from 'vue'
+import { date } from 'quasar'
 
 export default {
   setup () {
     const leftDrawerOpen = ref(false)
+    const rightDrawerOpen = ref(false)
 
     return {
       leftDrawerOpen,
       toggleLeftDrawer () {
         leftDrawerOpen.value = !leftDrawerOpen.value
+      },
+
+      rightDrawerOpen,
+      toggleRightDrawer () {
+        rightDrawerOpen.value = !rightDrawerOpen.value
       }
+    }
+  },
+  computed: {
+    todayDate() {
+      const timeStamp = Date.now()
+      return date.formatDate(timeStamp, 'D MMM YYYY')
     }
   }
 }
