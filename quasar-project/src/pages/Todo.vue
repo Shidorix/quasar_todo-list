@@ -9,7 +9,7 @@
       @click="task.done = !task.done"
       clickable
       :class="{ 'done bg-green-2': task.done }"
-      v-for="task in tasks" 
+      v-for="(task, index) in tasks" 
       :key="task.title"
       v-ripple>
         <q-item-section avatar>
@@ -20,7 +20,9 @@
         </q-item-section>
         <q-item-section
         v-if="task.done" side>
-          <q-icon name="task_alt"></q-icon>
+        <q-btn
+        @click.stop='deleteTask(index)'
+         unelevated round color="secondary" icon="delete" />
         </q-item-section>
       </q-item>
 
@@ -48,6 +50,11 @@ export default {
           done: false,
         },
       ]
+    }
+  },
+  methods: {
+    deleteTask(index) {
+      this.tasks.splice(index, 1);
     }
   }
 }
