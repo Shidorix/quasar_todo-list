@@ -1,10 +1,10 @@
 <template>
   <q-page class="bg-grey-3 column">
     <div class="row q-pa-sm bg-accent">
-      <q-input class="col" placeholder="Добавьте задачу" filled bg-color="white" v-model="text" label="Задача" dense>
+      <q-input class="col" placeholder="Добавьте задачу" filled bg-color="white" v-model="newTask" label="Задача" dense @keyup.enter="addTask">
 
         <template v-slot:append>
-          <q-btn round dense flat icon="add" />
+          <q-btn @click="addTask" round dense flat icon="add" />
         </template>
 
       </q-input>
@@ -45,6 +45,7 @@
 export default {
   data() {
     return {
+      newTask: '',
       tasks: [
         {
           title: 'hello1',
@@ -77,11 +78,15 @@ export default {
           color: 'green'
         })
       });
-
-
-      
     },
-
+    addTask() {
+      this.tasks.push({
+        title: this.newTask,
+        done: false,
+      })
+      this.newTask = '';
+    },
+    
   }
 }
 
