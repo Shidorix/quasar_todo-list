@@ -1,6 +1,14 @@
 <template>
   <q-page class="bg-grey-3 column">
-    
+    <div class="row q-pa-sm bg-accent">
+      <q-input class="col" placeholder="Добавьте задачу" filled bg-color="white" v-model="text" label="Задача" dense>
+
+        <template v-slot:append>
+          <q-btn round dense flat icon="add" />
+        </template>
+
+      </q-input>
+    </div>
     <q-list
     separator bordered>
       
