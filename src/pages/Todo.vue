@@ -37,6 +37,14 @@
 
       
     </q-list>
+    <div v-if="!tasks.length" class="no-task absolute-center column items-center">
+      <q-icon
+      name="sentiment_dissatisfied"
+      size="150px"
+      color="accent"
+      />
+      <div class="text-h4 text-accent text-center"> Сейчас нет никаких задач  </div>
+    </div>
   </q-page>
 </template>
 
@@ -47,18 +55,18 @@ export default {
     return {
       newTask: '',
       tasks: [
-        {
-          title: 'hello1',
-          done: false,
-        },
-        {
-          title: 'hello2',
-          done: false,
-        },
-        {
-          title: 'hello3',
-          done: false,
-        },
+        // {
+        //   title: 'hello1',
+        //   done: false,
+        // },
+        // {
+        //   title: 'hello2',
+        //   done: false,
+        // },
+        // {
+        //   title: 'hello3',
+        //   done: false,
+        // },
       ]
     }
   },
@@ -97,4 +105,7 @@ export default {
   .q-item__label
     text-decoration: line-through
     color: grey
+
+.no-task
+  opacity: 0.5    
 </style>
